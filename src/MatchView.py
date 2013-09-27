@@ -436,12 +436,14 @@ class MatchViewerApp(object):
         dialog.run()
         dialog.destroy()
 
-
-
+    def getGladeFilename(self):
+        dir = os.path.dirname(__file__)
+        print dir
+        return os.path.join(dir, "MatchViewer.glade")
 
     def __init__(self):
         self.builder = gtk.Builder()
-        self.builder.add_from_file("MatchViewer.glade")
+        self.builder.add_from_file(self.getGladeFilename())
 
         drawArea1 = self.builder.get_object("im1DrawingArea")
         drawArea2 = self.builder.get_object("im2DrawingArea")
